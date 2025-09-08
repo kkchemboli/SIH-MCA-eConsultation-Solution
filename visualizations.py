@@ -2,6 +2,13 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import tempfile
 import os
+import base64
+
+
+def img_to_md(path):
+    with open(path, "rb") as f:
+        data = base64.b64encode(f.read()).decode("utf-8")
+    return f"![chart](data:image/png;base64,{data})"
 
 def generate_sentiment_pie_chart(results_df):
     """
