@@ -2,8 +2,6 @@ import pdfplumber
 import pandas as pd
 from transformers import pipeline
 from visualizations import generate_sentiment_pie_chart, generate_wordcloud, img_to_md
-from langchain.prompts import PromptTemplate
-from langchain_ollama import ChatOllama
 import pandas as pd
 
 def main(file_path):
