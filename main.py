@@ -82,40 +82,6 @@ def main(file_path):
     positive_wordcloud = generate_wordcloud(summary_df, "POSITIVE", headers[2])
     negative_wordcloud = generate_wordcloud(summary_df, "NEGATIVE", headers[2])
 
-    '''
-    #Creating report
-    llm = ChatOllama(model="qwen2.5",temperature=0)
-    rows_list = summary_df.to_dict(orient="records")
-
-    prompt = """
-    You are a reporting analyst. Generate a Markdown report from the given summary data.
-
-    Instructions:
-    1. For each row, include:
-    - Sr.No
-    - Para Number
-    - Summary
-    - Sentiment
-    in a Markdown table.
-    2. Include an overall analysis of all comments and overall sentiment.
-    3. Include visualizations in the report as Markdown images:
-    - Sentiment pie chart: ![]({{pie_chart}})
-    - Positive wordcloud: ![]({{positive_wordcloud}})
-    - Negative wordcloud: ![]({{negative_wordcloud}})
-
-    Data:
-    {rows}
-    Overall summary: {overall_summary}
-    """
-    prompt_template = PromptTemplate(
-        input_variables=["rows", "overall_summary", "pie_chart", "positive_wordcloud", "negative_wordcloud"],
-        template=prompt
-    )
-    chain = prompt_template | llm 
-    report = chain.invoke({"rows":rows_list,"overall_summary":final_summary,"pie_chart":pie_chart,"positive_wordcloud":positive_wordcloud,"negative_wordcloud":negative_wordcloud})
-    '''
-
-
     def generate_markdown_report(summary_df, final_summary, pie_chart_path, positive_wordcloud_path, negative_wordcloud_path):
         """Generate a Markdown report from summary DataFrame and visualizations."""
 
